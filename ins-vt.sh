@@ -35,7 +35,7 @@ cat> /etc/v2ray/config.json << END
   },
   "inbounds": [
     {
-      "port": 8443,
+      "port": 4443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -220,7 +220,7 @@ cat> /etc/v2ray/vless.json << END
   },
   "inbounds": [
     {
-      "port": 2083,
+      "port": 5443,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -316,7 +316,7 @@ cat> /etc/v2ray/vnone.json << END
   },
   "inbounds": [
     {
-      "port": 8880,
+      "port": 880,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -399,7 +399,7 @@ cat <<EOF > /etc/trojan/config.json
 {
     "run_type": "server",
     "local_addr": "0.0.0.0",
-    "local_port": 2087,
+    "local_port": 6443,
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
@@ -465,16 +465,16 @@ EOF
 cat <<EOF > /etc/trojan/uuid.txt
 $uuid
 EOF
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 6443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 4443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 5443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 6443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 4443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 5443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 880 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
@@ -491,32 +491,32 @@ systemctl enable trojan
 systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
-wget -O add-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-ws.sh"
-wget -O add-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-vless.sh"
-wget -O add-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-tr.sh"
-wget -O del-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-ws.sh"
-wget -O del-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-vless.sh"
-wget -O del-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-tr.sh"
-wget -O cek-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-ws.sh"
-wget -O cek-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-vless.sh"
-wget -O cek-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-tr.sh"
-wget -O renew-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-ws.sh"
-wget -O renew-vless "tps://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-vless.sh"
-wget -O renew-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-tr.shsh"
-wget -O certv2ray "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cert.sh"
-chmod +x add-ws
-chmod +x add-vless
-chmod +x add-tr
-chmod +x del-ws
-chmod +x del-vless
-chmod +x del-tr
-chmod +x cek-ws
-chmod +x cek-vless
-chmod +x cek-tr
-chmod +x renew-ws
-chmod +x renew-vless
-chmod +x renew-tr
-chmod +x certv2ray
+#wget -O add-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-ws.sh"
+#wget -O add-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-vless.sh"
+#wget -O add-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-tr.sh"
+#wget -O del-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-ws.sh"
+#wget -O del-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-vless.sh"
+#wget -O del-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/del-tr.sh"
+#wget -O cek-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-ws.sh"
+#wget -O cek-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-vless.sh"
+#wget -O cek-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cek-tr.sh"
+#wget -O renew-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-ws.sh"
+#wget -O renew-vless "tps://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-vless.sh"
+#wget -O renew-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/renew-tr.shsh"
+#wget -O certv2ray "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/cert.sh"
+#chmod +x add-ws
+#chmod +x add-vless
+#chmod +x add-tr
+#chmod +x del-ws
+#chmod +x del-vless
+#chmod +x del-tr
+#chmod +x cek-ws
+#chmod +x cek-vless
+#chmod +x cek-tr
+#chmod +x renew-ws
+#chmod +x renew-vless
+#chmod +x renew-tr
+#chmod +x certv2ray
 cd
 rm -f ins-vt.sh
 mv /root/domain /etc/v2ray
