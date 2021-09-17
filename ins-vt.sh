@@ -8,7 +8,7 @@ apt -y install chrony
 timedatectl set-ntp true
 systemctl enable chronyd && systemctl restart chronyd
 systemctl enable chrony && systemctl restart chrony
-timedatectl set-timezone Asia/Jakarta
+timedatectl set-timezone Asia/Kuala_Lumpur
 chronyc sourcestats -v
 chronyc tracking -v
 date
@@ -490,7 +490,7 @@ systemctl restart trojan
 systemctl enable trojan
 systemctl restart v2ray
 systemctl enable v2ray
-cd /usr/bin
+#cd /usr/bin
 #wget -O add-ws "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-ws.sh"
 #wget -O add-vless "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-vless.sh"
 #wget -O add-tr "https://raw.githubusercontent.com/Dimas1441/yamate/main/1/add-tr.sh"
